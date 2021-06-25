@@ -1,0 +1,94 @@
+In questa tesi triennale presentiamo alcuni interessanti esempi e risultati riguardanti i gruppi generati da automi. 
+
+Nella prima sezione esploriamo le basi della teoria degli automi. Introduciamo euristicamente l'automa come modello di computazione, ovvero una macchina che per ogni dato immesso (input), ritorna un altro dato (output). Presentiamo input ed output con elementi dell'insieme $\abece$, che chiamiamo alfabeto. Vediamo l'insieme delle sequenze finite $\fslovar$, detto dizionario finito, come un monoide rispetto all'operazione di composizione di parole $\circ$, dove l'identità è data da $\varnothing$, la parola senza lettere. Data una parola $x_1\ldots x_n\in\fslovar$ definiamo la sua lunghezza come $|x_1\ldots x_n|=n$. Definiamo $\abece^{\omega}$, l'insieme delle sequenze infinite di elementi di $\abece$, detto dizionario infinito. Una parola $\word{w}=x_1\dots x_n$ è il \obs{prefisso} di una parola $\word{u}\in\fslovar$ (o $\word{u}\in\infslovar$) se $\word{u}=\word{w}\word{v}=x_1\dots x_n \word{v}$ per qualche $\word{u}\in\fslovar$ (o $\in\infslovar$). In questo caso definiamo $\word{v}=\word{u}-\word{w}$. Diamo la definizione di prefisso comune di lunghezza massima di un insieme di parole in $\fslovar\cup\infslovar$ e lo usiamo per definire una metrica su $\infslovar$. Vediamo poi la caratterizzazione di $\fslovar$ come grafo ad albero: un nodo $\word{w}$  è discendente di un altro $\word{v}\in\fslovar$ se e solo se $\word{w}=\word{v}x$, per qualche $x\in\abece$. Chiamiamo questa costruzione albero delle parole su $\abece$. Introduciamo la nozione di omomorfismo d'albero di parole, ovvero una funzione $f:A\longrightarrow B$, con $A,B$ alberi di parole, tali che (1) $f(\varnothing)=\varnothing$ e (2) se $\word{w}\in A$  è discendente di $\word{v}\in A$, allora $f(\word{w})$ è discendente di $f(\word{v})$. Passiamo alla definizione di automa deterministico finito di Mealy:
+\begin{definizione}
+Un \obs{automa} è una 4-tupla $\auto{A}=\langle\abece,\QQ,\pi,\lambda\rangle$ dove:
+\begin{itemize}
+	\item $\abece$ è una alfabeto, a cui di solito ci riferiamo con \obs{alfabeto degli input} e/o \obs{output},
+	\item $\QQ$ è un insieme detto \obs{insieme degli stati interni dell'automa},
+	\item $\pi:\abece\times\QQ \longrightarrow \QQ $ è una funzione detta \obs{funzione di transizione},
+	\item $\lambda:\abece\times\QQ \longrightarrow \abece $ è una funzione detta \obs{funzione d'output}.
+\end{itemize}
+Diciamo che  $\auto{A}$ è un automa a \obs{$|\QQ|$ stati} \obs{su $\abece$}.
+\end{definizione}
+
+Diamo una rappresentazione degli automi con i diagrammi di Moore e scopriamo che ogni diagramma di Moore definisce unicamente un automa. Estendiamo le definizioni della funzione di transizione e della funzione d'output tramite le formule ricorsive:
+\begin{itemize}
+	\item $\PI:\fslovar \times \QQ\longrightarrow \QQ :$ 
+	$$\PI(\varnothing,q)=q,$$ $$\PI(x \word{w},q)=\PI(\word{w},\PI(x,q)).$$
+	\item $\LAMBDA:\fslovar \times \QQ\longrightarrow \fslovar :$
+	$$\LAMBDA(\varnothing,q)=\varnothing,$$ $$\LAMBDA_q(x \word{w}):=\LAMBDA(x \word{w},q)=\LAMBDA(x,q)\LAMBDA(\word{w},\PI(x,q)).$$
+\end{itemize}
+Passiamo alla definizione di automa iniziale $\auto{A}_{q_0}$ (ovvero l'automa $\auto{A}$ con lo stato $q_0$ fissato) e della sua azione $\LAMBDA_{q_0}:\fslovar\longrightarrow\fslovar$.
+
+Nella sezione due vediamo le strutture algebriche definite dagli automi. Dati due automi $\auto{A}_1$ ed $\auto{A}_2$ definiamo la loro composizione $\auto{A}_1*\auto{A}_2$, che ci permette di dire che se $\LAMBDA_{\auto{A}_1}, \LAMBDA_{\auto{A}_2}$ sono le azioni di $\auto{A}_1$ ed $\auto{A}_2$ rispettivamente, allora $ \LAMBDA^{\auto{A}_2}_{q_2} \circ \LAMBDA^{\auto{A}_1}_{q_1} = \LAMBDA^{\auto{A}_1*\auto{A}_2}_{p}$ per qualche $p$ nell'insieme degli stati di $\auto{A}_1*\auto{A}_2$. Ciò ci permette di osservare che l'insieme delle funzioni $f:\fslovar\longrightarrow\fslovar$ definite da qualche automa iniziale, dette funzioni automatiche sincrone, è un semigruppo rispetto all'operazione di composizione di funzioni. Lo denotiamo con $\semisynaut(\abece)$. Scopriamo che una funzione $f:\fslovar\longrightarrow\fslovar$ è automatica sincrona se e solo se è un endomorfismo d'albero su $\fslovar$. Osserviamo che se $f$ è un endomorfismo d'albero su $\fslovar$ allora $f(\abece^n)\subseteq\abece^n$ ($f$ preserva la lunghezza delle parole in $\fslovar$) e $f(\word{v})$ è un prefisso di $f(\word{vw})$ per tutti gli elementi $\word{v}\word{w}\in\fslovar$. Definiamo poi la restrizione di un endomorfismo d'albero $f$ in $\word{v}\in\fslovar$ come la funzione $f|_\word{v}:\fslovar\longrightarrow\fslovar$ definita come $f|_\word{v}(\word{w})=f(\word{vw})-f(\word{v}).$ Osserviamo che data un'azione $\LAMBDA_{q_0}$ di un automa iniziale, $(\LAMBDA_{q_0})|_{\word{v}}=\LAMBDA_{\PI(\word{v},q_0)}$. 
+
+Nella sottosezione successiva, dati $q_0,q\in\QQ$ per un automa $\auto{A}=\langle\abece,\QQ,\pi,\lambda\rangle$, diciamo che uno stato $q$ è accessibile rispetto ad uno stato $q_0$ se esiste una parola $\word{w}\in\fslovar$ tale che $\LAMBDA_{q_0}(\word{w})=q$. Dimostriamo la seguente proposizione:
+\begin{proposizione}
+Dato un automa $\auto{A}=\langle \abece,\QQ,\pi,\lambda\rangle$ ed uno stato $q_0\in\QQ$, $\LAMBDA_{q_0}$ è una funzione invertibile \obs{se e solo se} per ogni stato accessibile $q\in\QQ$ (rispetto a $q_0$) la funzione $\lambda_q:\abece\longrightarrow\abece$ è invertibile.
+\end{proposizione}
+Diciamo che un automa iniziale $\auto{A}_{q_0}$ è invertibile se la sua azione $\LAMBDA_{q_0}$ è invertibile. Diciamo che un automa $\auto{A}$ è invertibile se l'azione di $\auto{A}_{q_0}$ è invertibile per ogni $q_0$ nell'insieme degli stati di $\auto{A}$, ed introduciamo una notazione alternativa per i diagrammi di Moore. Dato un automa $\auto{A}=\langle\abece,\QQ,\pi,\lambda\rangle$ chiamiamo il semigruppo generato da $\auto{A}$ l'insieme:
+$$H(\auto{A}):=\langle \{\LAMBDA_q:\fslovar\longrightarrow\fslovar | q\in\QQ\}\rangle, $$
+dove $\langle S\rangle$, per un isieme $S$, è il più piccolo sottosemigruppo che contiene $S$. Da qui in poi per automa intendiamo automa invertibile, quindi $H(\auto{A})$ sarà un sottogruppo di $\synaut(\abece)$, l'insieme delle trasformazioni sincrone automatiche biettive.
+
+Nella terza sezione affrontiamo alcune costruzioni algebriche necessarie per l'analisi dei gruppi generati da automi. Definiamo il gruppo simmetrico $\symm(X)$ di un insieme $X$, e l'operazione di prodotto di funzioni $f\cdot g:=g\circ f$. Poi definiamo un azione sinistra di un gruppo $G$ su un insieme $X$ come un omomorfismo $T_l:G\longrightarrow(\symm(X),\circ)$ ed un'azione destra come un omomorfismo $T_r:G\longrightarrow(\symm(X),\cdot)$. Mostriamo che esiste un'azione sinistra di $G$ su $X$ se e solo se esiste una funzione $\tau_l:G\times X\longrightarrow X$ tale che sono valide le condizioni:
+\begin{enumerate}
+\item $1x:=\tau_l(1,x)=x\text{ per ogni }x\in X,$
+\item $g(hx):=\tau_l(g,\tau_l(h,x))=\tau_l(g* h,x)=:(g*h)x\text{ per ogni }x\in X\text{ e }g,h\in G.$
+\end{enumerate}
+Una caratterizzazione analoga vale per le azioni destre. Diciamo che un'azione $T_l:G\longrightarrow(\symm(X),\circ)$ di un gruppo $G$ su un insieme $X$ è fedele se $T_l$ è iniettiva. In questo caso chiamiamo chiamiamo $(G,X)$ un gruppo di permutazioni sinistro. Descriviamo analogamente un gruppo di permutazioni destre $(X,G)$, e vediamo qualche esempio. Definiamo l'azione destra di un gruppo $H$ su un gruppo $N$ come un'omomorfismo $\varphi:H\longrightarrow (\aut(N),\cdot)$. Dati gruppi $H,N$, e data un'azione destra $\varphi:H\longrightarrow (\aut(N),\cdot)$, su $H\times N$ costruiamo la seguente operazione:
+$$
+\star_\varphi:((h_2,n_2),(h_1,n_1))\longmapsto (\; h_2*_H h_1\;,\; \varphi(h_1)(n_2)*_N n_1) =(\; h_2 h_1\;,\; (n_2h_1) *_N n_1) 
+$$
+Chiamiamo $(H\times N,\star_\varphi)$ il \obs{prodotto semidiretto $H\ltimes_{\varphi} N$ di $H$ e $N$ relativo a $\varphi$} e lo segnamo come $H\ltimes_{\varphi} N$. Dimostriamo che  $H\ltimes_{\varphi} N$ è un gruppo e vediamo l'esempio di $\Z_2\ltimes_{\varphi}\Z_n$ isomorfo a $\mathcal{D}_n$, il gruppo diedrale di ordine $n$. Nella sottosezione successiva definiamo, presi un gruppo $A$ ed un insieme $Y$, il prodotto diretto 
+$$A^Y:=\{ \overline{a}=(a_\omega )_{\omega\in Y} : a_\omega\in A\},$$ e la somma diretta:
+$$A^{(Y)} :=\{ \widetilde{a}=(a_\omega )_{\omega\in Y} : a_\omega\in A \text{ and }a_\omega\neq 1_A\text{ only for a finite number of }\omega \}.$$
+Dimostriamo poi che avendo un gruppo di permutazioni destre $(Y,B)$ ed un gruppo $A$, L'applicazione $\Phi:B\longrightarrow \aut(A^Y)$ definita come $$\Phi_\beta(\overline{a})= \overline{a}\beta=(a_y)_{y\in Y}\beta:=(a_{y\beta})_{y\in Y}=(a_{y})_{y\beta^{-1}\in Y}$$ è un'azione destra di $B$ sul gruppo $A^Y$, dove $A^Y$ è preso con l'operazione di $A$ componente per componente.Analogo vale sostituendo $A^Y$ con $A^{(Y)}$. Con le stesse premesse definiamo quindi il prodotto intrecciato ristretto $B\wr A$ di $B$ e $A$ come $B\ltimes_\Phi A^{(Y)}$, e lo segnamo come $B\wr A$, mentre definiamo il prodotto intrecciato non ristretto $B\wr A$ di $B$ e $A$ come $B\ltimes_\Phi A^{Y}$ e lo segnamo come $B\wr A$. Se $Y=\{y_1, \ldots ,y_k\}$ segnamo $(\beta,(a_i)_{i\in Y})\in B\wr A$ come $ \beta(a_1,\ldots,a_k)$.
+
+Infine applichiamo le strutture studiate alla teoria degli automi. 
+Definiamo $T: (\aut_{tree}(\fslovar),\circ)\longrightarrow(\symm(\abece),\circ)$ come $T(f)(x):=f(x)$, dove $\aut_{tree}(\fslovar)$ è l'insieme degli automorfismi d'albero su $\fslovar$, i.e. delle trasformazioni sincrone automatiche biettive, e dimostriamo che è un omomorfismo. Con $T$ così definito vediamo la seguente proposizione:
+\begin{proposizione}
+Sia $\abece=\{x_1,\ldots,x_k\}$ e $T$ come prima. Prendiamo il gruppo di permutazioni destre $(\abece,\symm(\abece))$, dove $\symm(\abece)$ agisce da destra su $\aut_{tree}(\fslovar)^\abece$ con $\Phi(\sigma)(f_{x_1},\ldots,f_{x_k})=(f_{x_1\sigma},\ldots,f_{x_k\sigma})$. Definiamo $\psi:(\aut_{tree}(\fslovar),\circ)\longrightarrow (\symm(\abece),\circ) \wr (\aut_{tree}(\fslovar),\circ) = \symm(\abece)\ltimes_\Phi \aut_{tree}(\fslovar)^\abece$ come
+$$\psi(f)=T(f)(f|_{x_1},\ldots,f|_{x_k})$$
+dove $f|_{x_k}$ è la restrizione di $f$ in $x_k$. Allora $\psi$ è un isomorfismo di gruppi.
+\end{proposizione}
+Attraverso $\psi$ riscriviamo l'azione sinistra di $\aut_{tree}(\fslovar)$ su $\fslovar$ come:
+$$\beta(a_{x_1},\ldots,a_{x_k})(w_1 w_2\ldots w_n)=\beta(w_1).a_{w_1}(w_2\ldots w_n),$$
+dove $w_1 w_2\ldots w_n$ è una parola in $\fslovar$. Proseguiamo poi con un altro importante risultato:
+
+\begin{proposizione}
+Sia $\auto{A}=\langle\abece,\QQ,\pi,\lambda\rangle$ un automa tale che $\QQ=\{q_1,\ldots,q_n\}$ e $\abece=\{x_1,\ldots,x_k\}$. Allora l'insieme delle azioni $\LAMBDA_{q_l}$ definite da $\auto{A}$ può essere descritto con $n$ formule ricorsive
+\begin{equation}
+\begin{split}
+f_{q_1}&=\beta_{q_1}(h_{x_1,q_1},\ldots,h_{x_k,q_1}),\\
+f_{q_2}&=\beta_{q_2}(h_{x_1,q_2},\ldots,h_{x_k,q_2}),\\
+\ldots\\
+f_{q_n}&=\beta_{q_n}(h_{x_1,q_n},\ldots,h_{x_k,q_n}),
+\label{eq:recursive system abstract}
+\end{split}
+\end{equation}
+dove ogni $h_{x_i,q_j}$ è uguale a qualche $f_{q_l}$ ed ogni $\beta_{q_j}$ è un permutazione dell'alfabeto $\abece$.
+Inoltre, sia $S$ un sistema \eqref{eq:recursive system abstract}, dove ogni $h_{x_i,q_j}$ è uguale a qualche $f_{q_l}$ ed ogni $\beta_j$ è una permutazione dell'alfabeto. Allora $S$ definisce unicamente un automa $\auto{A}=\langle\abece,\QQ,\pi,\lambda\rangle$ tale che $\LAMBDA_{q_l}=f_{q_l}$ per ogni $q_l\in\QQ$.
+\end{proposizione}
+
+Nella quarta sezione portiamo un risultato che descrive tutti i gruppi generati da un automata a due stati su un alfabeto con due lettere $\abece=\{0,1\}$. Per prima cosa introduciamo alcuni oggetti matematici che compaiono nella formulazione e nella dimostrazione del teorema di classificazione. Vediamo il gruppo diedrale infinito $\Z_2\ltimes_{\varphi}\Z$, ovvero il gruppo delle simmetrie di $\Z$ ed il gruppo del lampionaio $\Z\wr\Z_2=\Z\ltimes\Z_{2}^{(\Z)}$. 
+Poi definiamo una trasformazione sincrona automatica biettiva particolare su $\abece=\{0,1\}$, la macchina delle addizioni $f=\tau(f,id_{\synaut(\abece)})$. Studiando alcune prioprietà di $f$ siamo poi in grado di mostrare che $\langle f\rangle $ è isomorfo a $\Z$. Formuliamo il teorema:
+\begin{teorema}
+Sia $\auto{A}=\langle\abece, \QQ, \pi, \lambda\rangle$ un automa. Sia $\abece=\{0,1\}$ e $|\QQ|=2$. Allora il gruppo generato da $\auto{A}$ è isomorfo ad uno dei seguenti gruppi:
+\begin{enumerate}
+\item Il gruppo triviale $\{1\}$,
+\item Il gruppo $(\Z_2,+)$,
+\item La somma diretta $\Z_2\oplus\Z_2$,
+\item Il gruppo ciclico infinito $\Z$,
+\item Il gruppo diedrale infinito $\mathcal{D}_\infty$,
+\item Il gruppo del lampionaio $\LL$.
+\end{enumerate}
+\end{teorema}
+Infine presentiamo una parte della dimostrazione. Vediamo che, se $\QQ=\{r,s\}$, ed $a:=\LAMBDA_r$ and $b:=\LAMBDA_s$, allora le possibili definizioni di $a,b$ sono:
+\begin{equation}
+\begin{split}
+a&=\sigma^{i_1}(x_{11},x_{12}),\\
+b&=\sigma^{i_2}(x_{21},x_{22}),
+\end{split}
+\end{equation}
+dove $x_{ij}\in\{a,b\}$ e $\sigma^{i_1},\sigma^{i_2}\in\symm(\abece)$, $i_1,i_2\in\{0,1\}$ con $\sigma^0:=id_{\symm(\abece)}$ mentre $\sigma^1:=\tau$, la trasposizione in $\symm(\abece)$. Ci accorgiamo che per vedere tutti i gruppi definiti da $\auto{A}$, a meno di isomorfismi, possiamo analizzare esclusivamente i $24$ casi dove $a\in\{\tau(a,a),\tau(a,b),\tau(b,b)\}$. Proseguiamo analizzando alcuni di questi casi.

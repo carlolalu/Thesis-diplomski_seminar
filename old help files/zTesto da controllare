@@ -1,0 +1,52 @@
+
+###########################################################################
+TESTO SLOVENO
+V tem dodiplomskem seminarju predstavljamo nekaj zanimivih primerov in rezultatov o grupah, ki jih je ustvaril avtomat.
+
+V prvem delu vidimo imamo glavne predmete. Hevristično uvajamo avtomat kot izračunski model, t.j.\ stroj, ki za vsak input priredi en output. To je razlog za formalizacijo inputa in outputa, kar lahko vidimo kot zaporedje simbolov, ki jih lahko prebere in zapiše naš stroj, torej zaporedje elementov ene končne množice $ \abece $, ki se imenuje abeceda. Vidimo, da je množica končnih zaporedj, imenovanih končni slovar, možno razumeti kot monoid, glede na sestavo besed, ali kot drevo (graf), v katerem en vozel $\word{w}$ je sin drugega $\word{v}\in\fslovar$ natanko takrat ko $\word{w}=\word{v}x$, s $x\in\abece$. Nato preidemo na resnično definicijo Mealyjevega končnega determinističnega avtomata $ \auto{A} = \langle \abece, \QQ, \pi, \lambda \rangle$ in jo grafično prikažemo z Moorejevimi diagrami. Od tod izpeljemo idejo začetnega avtomata $ \auto{A}_{q_0} $ in njegovega delovanja $ \LAMBDA_{q_0}: \fslovar \longrightarrow \fslovar $.
+
+V drugem delu se premaknemo na bolj abstraktno raven, kjer opisujemo operacijo sestave avtomatov in analiziramo njene lastnosti $ \semisynaut (\abece) $, t.j.\ množica funkcij $ f: \fslovar \longrightarrow \fslovar $, imenovanih sinhrone transformacije, definirane z nekim začetnim avtomatom. To lahko prepoznamo tudi kot množico drevesnih homomorfizmov končnega slovarja $ \fslovar$. Pri tem gledamo samo obrnljive avtomate, torej samo bijektivne sinhrone transformacije, ki tvorijo grupo $ \synaut (\abece) $, ki je izomorfna z $ \aut_{tree} (\fslovar) $, množico avtomorfizmov drevesa $\fslovar$. Preučujemo vpliv obrnljivnosti avtomata nad dostopnostjo njegovih stanj, in končno vidimo definicijo grupe, generirane z automatom.
+
+Treti del je pretežno tehnični, ker opisuje vrsto algebraičnih orodij, potrebnih za analizo grup, ki jih bomo videli. Začnemo z definicijo delovanja grupe $ G $ na množico $ X $, tako desne kot leve, in še posebej gledamo, na primer, grupo $ \symm (X) $ (simetrična grupa nad $ X $), da deluje na $ X $ z desne, z uporabo zapisa od \cite{4}. Nato vidimo delovanje grupa $H$ na drugi grup $N$, ki ohranja strukturo $N$, tako da lahko uvajamo semidirektni izdelek $ H \ltimes N $ in lahko izpostavimo nekaj praktičnih primerov, kot dihedralno grupo $ \Z_2 \ltimes \Z_n $. S tema dvema strukturama definiramo \obs{wreath} izdelek med desno grupo permutacij $ (Y, B) $ in grupo $ A $, zapisano $ B \wr A $. V naslednjem oddelku uporabimo te koncepte za polje avtomat in ugotovimo, da je $ \aut_{tree} (\fslovar) $ izomorfno na $ \symm (\abece) \wr \aut_{tree} (\fslovar) $. Ker razumemo, da je $ \aut_{tree} (\fslovar) $ izomorfno na $ \synaut (\abece) $, grupo bijektivnih sinhronih transformacij, lahko opišemo vsa delovanja avtomata z $ n $ stanj nad abecedo $ k $  simbolov prek rekurzivnih formul:
+\begin{align*}
+f_1 & = \beta_1 (h_{1, x_1}, \ldots, h_{1, x_k}), \\
+f_2 & = \beta_2 (h_{2, x_1}, \ldots, h_{2, x_k}),\\
+\ldots \\
+f_n & = \beta_n (h_{n, x_1}, \ldots, h_{n, x_k}),
+\end{align*}
+kjer je vsak $ h_{j, x_i} $ enak nekaj $ f_j $ za nekaj $ j \in \{1, \ldots, n \} $, in vsak $ \beta_j $ je permutacija v $ \symm (\abece) $.
+
+V četrtem in zadnjem delu predstavljamo en rezultat \cite{7}, po dokazu \cite{5}. V tem izreku združujemo grupe ustvarjane z avtomatom z dvema stanjema nad abecedo z dvema črkama. Pred izražanjem izreka predstavimo objekte, ki jih morda bralec ne pozna in jih najdemo v rezultatu. Začnemo z neskončno diedrsko grupo $ \Z_2 \ltimes \Z $, ki je množica simetrij od $ \Z $. Premaknemo se na grupo vžigalnika, $ \Z \wr \Z_2 $, in na koncu v $ \synaut (\abece) $, kjer vzamemo eno specifično funkcijo, imenovano adding machine, in nekatere njene posebne lastnosti. Izrek izrazimo in štejemo primerje prek rekurzivnih formul:
+\begin{align*}
+a & = \sigma^{i_1} (x_{11}, x_{12}) \\
+b & = \sigma^{i_2} (x_{21}, x_{22})
+\end{align*}
+kjer so $ a, b $ dve delovanji, ki ju definira avtomaton, $ \sigma^{i_1}, \sigma^{i_2} $ so permutacije v $ \symm (\{0,1 \}) $ in $ x_ij $ so elementi v $ \{a, b \} $. Od tukaj analiziramo vsakega od 64 možnih primerov.
+
+
+
+
+###########################################################################
+TESTO ITALIANO
+
+In questa tesi triennale presentiamo alcuni interessanti esempi e risultati riguardanti i gruppi generati da automi. 
+
+Nella prima parte prendiamo confidenza con gli oggetti principali. Introduciamo euristicamente gli automi come modelli di computazione, ovvero macchine che per ogni input dato, ritornano un output. Questo ci motiva a formalizzare input ed output, che vengono visti come sequenze di simboli che possono essere letti e trascritti dalla nostra macchina. Quindi sequenze di elementi di un insieme finito $\abece$ detto alfabeto. Vediamo che l'insieme delle sequenze finite, detto dizionario finito, può essere visto o come un monoide rispetto all'operazione di composizione di parole oppure come un grafo ad albero, in cui un nodo $\word{w}$  è discendente di un altro $\word{v}\in\fslovar$ se e solo se $\word{w}=\word{v}x$, con $x\in\abece$. Poi passiamo alla definizione vera e propria di automa deterministico finito di Mealy $\auto{A}=\langle\abece,\QQ,\pi,\lambda\rangle$ e ne diamo una visualizzazione grafica tramite i diagrammi di Moore. Da qui deriviamo l'idea di automa iniziale $\auto{A}_{q_0}$ e della sua azione $\LAMBDA_{q_0}:\fslovar\longrightarrow\fslovar$.
+
+Nella seconda parte invece ci spostiamo su un livello più astratto, descrivendo l'operazione di composizione di automi e analizzando le proprietà dell'insieme $\semisynaut(\abece)$, ovvero l'insieme delle funzioni $f:\fslovar\longrightarrow\fslovar$, dette trasformazioni sincrone, che possono essere descritte da qualche automa iniziale. Qui scopriamo che quest'insieme è in biezione con l'insieme degli omomorfismi d'albero del dizionario finito $\fslovar$. Restringiamo poi lo sguardo solo sugli automi invertibili, e quindi sulle trasformazioni sincrone biettive, che formano il gruppo $\synaut(\abece)$, che sarà quindi isomorfo a $\aut_{tree}(\fslovar)$, ovvero l'insieme degli automorfismi d'albero su $\fslovar$. Studiamo come influisce l'invertibilità di un automa sull'accessibilità dei suoi stati, ed infine diamo a definizione di gruppo generato da un automa.
+
+La parte numero tre è la più tecnica, perchè descrive una serie di strumenti algebrici necessari all'analisi dei gruppi generati da automi. Partiamo dalle definizioni di azione di un gruppo $G$ su un insieme $X$, sia destra che sinistra, e del caso particolare in cui sia $\symm(X)$ (gruppo simmetrico su $X$) ad agire su $X$ da destra, usando la notazione introdotta in \cite{4}. Successivamente vediamo azione di un gruppo $H$ su un altro gruppo $N$ che conserva la struttura di $N$, al fine di introdurre il prodotto semidiretto $H\ltimes N$, e indicarne alcuni esempi pratici come il gruppo diedrale $\Z_2\ltimes \Z_n$. Con queste due strutture definiamo infine il prodotto \obs{wreath} di un gruppo di permutazioni destro $(Y,B)$ e di un gruppo $A$, scritto $B\wr A$. Nella sezione seguente applichiamo questi concetti al campo degli automi, scoprendo che $\aut_{tree}(\fslovar)$ è isomorfo a $\symm(\abece)\wr \aut_{tree}(\fslovar)$. Siccome sappiamo che $\aut_{tree}(\fslovar)$ è isomorfo a $\synaut(\abece)$, il gruppo delle trasformazioni sincrone biettive, possiamo descrivere tutte le azioni di un automa a $n$ stati su un alfabeto a $k$ simboli tramite formule ricorsive del tipo
+\begin{align*}
+f_1&=\beta_1(h_{1,x_1},\ldots,h_{1,x_k}),\\
+f_2&=\beta_2(h_{2,x_1},\ldots,h_{2,x_k}),\\
+\ldots\\
+f_n&=\beta_n(h_{n,x_1},\ldots,h_{n,x_k}),
+\end{align*}
+dove ogni $h_{j,x_i}$ è uguale a qualche $f_j$ per qualche $j\in\{1,\ldots,n\}$, ed ogni $\beta_j$ è una permutazione in $\symm(\abece)$.
+
+Nella quarta ed ultima parte presentiamo un risultato di \cite{7}, seguendo la dimostrazione di \cite{5}. Il teorema in questione classifica completamente i gruppi generati da automi a 2 stati su alfabeti a 2 lettere. Prima di enunciarlo presentiamo i gruppi che potrebbero essere sconosciuti al lettore e che si trovano nel risultato, partendo dal gruppo diedrale infinito $\Z_2\ltimes\Z$, cioè l'insieme delle simmetrie di $\Z$. Passiamo al lamplighter group, $\Z\wr\Z_2$, ed infine introduciamo una trasformazione particolare in $\synaut(\abece)$, detta adding machine, ed alcune sue proprietà particolari. Enunciamo poi il teorema, e impostiamo il conteggio dei casi attraverso le formule ricorsive
+\begin{align*}
+a&=\sigma^{i_1}(x_{11},x_{12}),\\
+b&=\sigma^{i_2}(x_{21},x_{22}),
+\end{align*}
+dove $a,b$ sono le due azioni definite dall'automa, $\sigma^{i_1},\sigma^{i_2}$ sono permutationi in $\symm(\{0,1\})$, e $x_{ij}$ sono elementi in $\{a,b\}$. Da qui analizziamo ognuno dei 64 casi possibili.

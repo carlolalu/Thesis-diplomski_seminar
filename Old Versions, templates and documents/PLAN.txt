@@ -1,0 +1,15 @@
+(1)Read chapters "Including Graphics..", "Floating Bodies", "Installing extrapackages","Producing Mathematical Graphics"(ALL), and of "Customising Latex" read everything but Boxes and Rules
+
+(2)Write write write, don't care about the layout, nor about the figures, simply write usign YOUR OWN COMMANDS, so that everything becomes easily modifiable
+
+	(a) Write the introduction with the related topics
+	
+
+
+I should maybe then introduce the concept of free group to treat certain demonstration of the complete classification of groups desribed by 2 state automata on 2 letter alphabet. I should maybe write which kind of topic I expect somebody to know in order to understand the thesis and give some sources in case sombody would liket o find out about(for example free groups contemporary abstract algebra). 
+
+
+
+
+
+I should thank many people, like my flatmates chris and matic, matej that helped me, my girlfirend and my friedns who sustained me, my family as well, all the professors of ljubljana and trieste for explaining me all the mathematics I know, and all my mentors to be so super patient with me, so confused and lost. And particularly gann, valentina, petkovsek, strle and the secretary for being so patient with me. And valentina and petkovsek, above all, to have given me this possibility

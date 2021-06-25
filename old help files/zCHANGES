@@ -1,0 +1,130 @@
+#Should I add an example of two initial automaton one inverse of the other?
+#Should I add an image of the initial automaton describing the adding machine?
+#better trees?
+#for the images I can follow my old presentation
+#beamer presentation?
+
+
+
+Erased all questions throughtout the whole thesis, erased all capital letters in the middle of a sentece, and in general applied all corrections suggested
+
+##############################################################
+ABSTRACTS, preamble and keywords:
+
+Colors of links, and link of image of dihedral groups and of the infinite dihedral group (linked on words)
+
+Keywords (Neskončni Vžigalnik Grup? Stroj Dodajanja? Or is it incorrect?), are they enough?
+
+Slovenian abstract
+
+Longer abstract in english, changed
+
+Italian Abstract
+
+Reintroduction of environment "remark" due to absence in the template
+######################################################################
+
+
+
+
+
+
+
+
+
+#####################################################################
+PART 1
+
+caption of the image of the tree of words in the case X={0,1}
+
+Slightly changed the text of the section {Automata and Initial Automata}
+
+Slightly different text at the beginning of part introduction.
+
+Graphically different tree at figure 2 tree structure of the dictionary
+######################################################################
+
+
+
+
+
+
+
+#####################################################################
+PART2
+
+Precise definition of restriction in section "synchronous automatic transformations"
+#################################################################
+
+
+
+
+
+
+
+##################################################################
+PART3
+
+Erased the part on the opposite group and the conversion of actions and of actions mapped in AUT(N), creation of proposition 5.7 on the right action of S(X) on X
+
+deleted the concept of action as a group, and consequently there are small changes in the definition of semidirect product and in the subsection regarding the wreath product, in particular in proposition and in definition of wreath product.
+
+added figure at the beginning of "group products and their applications"
+
+text of introduction of "wreath products" slightly changed.
+
+Introduction of section "actions" slightly changed
+
+Introduction section "action and product" reworded
+
+Added example 5.6 in the section "actions and faithful actions"
+
+In section "actions and faithful actions" proposition 5.4 and 5.6 (regarding the more visualisable definition of left and right action) are integrated and reworded.
+
+Notation for the composition of words completely changed to "." in the last part through convention at the beginning of "application to automata"
+#####################################################################
+
+
+
+
+
+
+
+
+
+
+
+######################################################################
+PART4
+
+Section Proof, slight difference in the text
+
+\qed at the end of the theorem
+
+Introduction of the classification theorem changed
+
+text in the introduction of "proof" slighlty changed
+###########################################################
+
+
+
+
+
+
+
+
+
+
+
+###############################################################
+APPENDIX AND BIBLIOGRAPHY
+
+added section ACKNOWLEDGMENTS (is it too much to thank this way? should I avoid it?)
+added section FOR THE CURIOUS READER 
+
+Bibliography: I quoted the some books with template found online, I don't know if it's right. I followed an alphabetical order regarding the surname, even if the first letter is according to the name, is it wrong?
+[4,11] in Automata and Initial Automata
+[7,5,2] cited at Classification Theorem Part introduction, and at the beginning of the proof of the classification theorem. Text slightly changed.
+[12,8] cited at the section Lamplighter Group.
+[1,4,6,9,11,12,13] cited in FOR THE CURIOUS READER
+###############################################################

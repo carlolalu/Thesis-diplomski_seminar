@@ -1,0 +1,21 @@
+V sledečem diplomskem delu predstavljamo nekaj zanimivih primerov z avtomati generiranih grup in z njimi povezanih rezultatov.
+
+V prvem delu spoznamo osnove. Hevristično uvedemo avtomat kot računski model, tj.\ stroj, ki vsakemu vhodnemu podatku (input) priredi izhodnega (output). To nas motivira k formalizaciji inputa in outputa: gre za zaporedja simbolov, ki jih naš stroj lahko prebere in prepiše, torej zaporedja elementov končne množice $ \abece $, ki ji pravimo abeceda. Opazimo, da je množico končnih zaporedij, imenovano končni slovar, mogoče razumeti kot monoid (glede operacije stikanja besed) ali kot drevo: graf, v katerem je vozlišče $\word{w}$ potomec vozlišča $\word{v}\in\fslovar$ natanko tedaj, ko velja $\word{w}=\word{v}x$, pri čemer $x\in\abece$. Nato preidemo na dejansko definicijo Mealyjevega končnega determinističnega avtomata $ \auto{A} = \langle \abece, \QQ, \pi, \lambda \rangle$ in jo grafično prikažemo z Moorejevimi diagrami. Od tod izpeljemo koncept začetnega avtomata $ \auto{A}_{q_0} $ in njegovega delovanja $ \LAMBDA_{q_0}: \fslovar \longrightarrow \fslovar $.
+
+V drugem delu se povzdignemo na bolj abstraktno raven, z opisom operacije komponiranja avtomatov in analiziranjem lastnosti množice $ \semisynaut (\abece) $, tj.\ množice funkcij $ f: \fslovar \longrightarrow \fslovar $, imenovanih sinhrone transformacije, ki jih lahko opišemo s kakim začetnim avtomatom. Tu spoznamo, da je zgornja množica v bijektivni korespondenci z množico homomorfizmov dreves končnega slovarja $ \fslovar$. Nato se osredotočimo le na obrnljive avtomate: bijektivne sinhrone transformacije, ki tvorijo grupo $ \synaut (\abece) $ izomorfno $ \aut_{tree} (\fslovar) $, oziroma množici avtomorfizmov drevesa na $\fslovar$. Preučimo še vpliv obrnljivnosti avtomata na dostopnost njegovih stanj in podamo definicijo z avtomatom generirane grupe.
+
+Tretji del je pretežno tehnične narave, saj opisuje vrsto algebraičnih orodij potrebnih pri analizi z avtomatom generiranih grup. Pričnemo z definicijo levega in desnega delovanja grupe $ G $ na množico $ X $ in specifičnega primera, ko grupa $ \symm (X) $ (simetrična grupa nad $ X $) z desne deluje na $ X $ - sledimo notaciji iz \cite{4}. Predstavimo delovanje grupe $H$ na grupo $N$, ki ohranja strukturo $N$, s ciljem uvedbe semidirektnega produkta $ H \ltimes N $ in navedemo nekaj praktičnih uporab slednjega, npr.\ diedersko grupo $ \Z_2 \ltimes \Z_n $. S tema strukturama definiramo produkt \obs{wreath} med grupo desnih permutacij $ (Y, B) $ in grupo $ A $, pišemo $ B \wr A $. V naslednjem razdelku koncepte apliciramo na področje avtomatov in ugotovimo, da je $ \aut_{tree} (\fslovar) $ izomorfna $ \symm (\abece) \wr \aut_{tree} (\fslovar) $. Ker vemo, da je $ \aut_{tree} (\fslovar) $ izomorfna grupi bijektivnih sinhronih transformacij $ \synaut (\abece) $, lahko vsa delovanja avtomata $ n $ stanj na abecedo s $ k $  simboli opišemo prek rekurzivnih zvez:
+\begin{align*}
+f_1 & = \beta_1 (h_{1, x_1}, \ldots, h_{1, x_k}), \\
+f_2 & = \beta_2 (h_{2, x_1}, \ldots, h_{2, x_k}),\\
+\ldots \\
+f_n & = \beta_n (h_{n, x_1}, \ldots, h_{n, x_k}),
+\end{align*}
+kjer je vsak $ h_{j, x_i} $ enak nekemu $ f_j $ za nek $ j \in \{1, \ldots, n \} $, in je vsak $ \beta_j $ permutacija iz $ \symm (\abece) $.
+
+V četrtem in zadnjem delu predstavimo rezultat iz \cite{7}, na podlagi dokazov iz \cite{5}. Dokazani izrek v celoti klasificira grupe generirane z avtomati dveh stanj nad abecedo dveh črk. Preden izrek navedemo predstavimo grupe, ki se pojavijo v rezultatu, in so bralcu verjetno manj znane, začenjši z neskončno diedersko grupo $ \Z_2 \ltimes \Z $, torej množice simetrij $ \Z $. Sledi grupa svetilničarja (lamplighter group), $ \Z \wr \Z_2 $, in uvedba posebne transformacije $ \synaut (\abece) $, imenovane adding machine, z nekaj njenimi posebnimi lastnostmi. Nazadnje navedemo izrek in nastavimo štetje primerov s pomočjo rekurzivnih zvez:
+\begin{align*}
+a & = \sigma^{i_1} (x_{11}, x_{12}) \\
+b & = \sigma^{i_2} (x_{21}, x_{22})
+\end{align*}
+kjer sta $ a, b $ delovanji, ki ju definira avtomat, $ \sigma^{i_1} in \sigma^{i_2} $ permutaciji iz $ \symm (\{0,1 \}) $ ter $ x_ij $ elementi iz $ \{a, b \} $. Analiziramo vseh 64 možnih primerov.
